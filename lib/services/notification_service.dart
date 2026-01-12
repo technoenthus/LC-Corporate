@@ -35,7 +35,7 @@ class NotificationService {
     
     // Start checking every minute
     _startTimer();
-    debugPrint("🔥 Notification service initialized with timer");
+    debugPrint(" Notification service initialized with timer");
   }
 
   static void _startTimer() {
@@ -54,7 +54,7 @@ class NotificationService {
       
       if (currentTime == medicineTime) {
         _showMedicineNotification(medicine);
-        debugPrint("🔥 Medicine notification triggered for ${medicine.name} at $currentTime");
+        debugPrint(" Medicine notification triggered for ${medicine.name} at $currentTime");
       }
     }
   }
@@ -100,13 +100,13 @@ class NotificationService {
       ),
     );
     
-    debugPrint("🔥 Medicine added to timer list: ${medicine.name} at ${medicine.time.hour}:${medicine.time.minute}");
+    debugPrint(" Medicine added to timer list: ${medicine.name} at ${medicine.time.hour}:${medicine.time.minute}");
   }
 
   static Future<void> checkPermissions() async {
     final androidPlugin = _notifications.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
     final granted = await androidPlugin?.areNotificationsEnabled();
-    debugPrint("🔥 Notifications enabled: $granted");
+    debugPrint(" Notifications enabled: $granted");
     
     await _notifications.show(
       999999,
@@ -128,6 +128,6 @@ class NotificationService {
 
   static void updateMedicineList(List<Medicine> medicines) {
     _medicines = medicines;
-    debugPrint("🔥 Medicine list updated: ${_medicines.length} medicines");
+    debugPrint(" Medicine list updated: ${_medicines.length} medicines");
   }
 }
